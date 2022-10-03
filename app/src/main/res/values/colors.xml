@@ -12,4 +12,6 @@
     <color name="light_grey">#b0bec5</color>
     <color name="dark_grey">#808e95</color>
     <color name="greyy">#102027</color>
+
+    <color name="shimmer">#BFBDBD</color>
 </resources>

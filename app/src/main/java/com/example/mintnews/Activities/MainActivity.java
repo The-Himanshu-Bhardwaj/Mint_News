@@ -2,6 +2,7 @@ package com.example.mintnews.Activities;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.example.mintnews.Models.ArticlesModel;
 import com.example.mintnews.Models.NewsModel;
 import com.example.mintnews.R;
 import com.example.mintnews.Retrofit.RetrofitWebService;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ArtcilesAdapter artcilesAdapter;
     private RecyclerView recyclerView;
 
+    ShimmerFrameLayout shimmerFrameLayout;
+
     private final String API_KEY = "8b160bca2e2f462196fa315230dd5b38";
 
     private ImageView allNewsBtn, entertainNewsBtn, businessNewsBtn, healthNewsBtn,
@@ -39,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("SHIV", "initCategoryBtns: ");
+
+        shimmerFrameLayout = findViewById(R.id.shimmer);
+        shimmerFrameLayout.startShimmer();
 
 
         retrofitWebService = RetrofitWebService.retrofit.create(RetrofitWebService.class);
@@ -80,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
 //                    Toast.makeText(MainActivity.this, articles.get(i).getUrlToImage() , Toast.LENGTH_SHORT).show();
 
                 }
+                shimmerFrameLayout.stopShimmer();
+                shimmerFrameLayout.setVisibility(View.INVISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
                 artcilesAdapter.notifyDataSetChanged();
 
             }
@@ -142,11 +151,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getNewsByCategory(String category) {
+        recyclerView.setVisibility(View.INVISIBLE);
+        shimmerFrameLayout.setVisibility(View.VISIBLE);
+        shimmerFrameLayout.startShimmer();
         Call<NewsModel> call = retrofitWebService.getNewsByCategory("https://newsapi.org/v2/top-headlines?country=in&category="+category+"&apiKey="+API_KEY);
         call.enqueue(new Callback<NewsModel>() {
             @Override
             public void onResponse(Call<NewsModel> call, Response<NewsModel> response) {
-                Toast.makeText(MainActivity.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
                 NewsModel model = response.body();
                 ArrayList<ArticlesModel> articles = model.getArticles();
                 articlesList.clear();
@@ -159,8 +171,11 @@ public class MainActivity extends AppCompatActivity {
 
 
                 }
+                shimmerFrameLayout.stopShimmer();
+                shimmerFrameLayout.setVisibility(View.INVISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
                 artcilesAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this, category+" news", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this, category+" news", Toast.LENGTH_SHORT).show();
 
 
             }
