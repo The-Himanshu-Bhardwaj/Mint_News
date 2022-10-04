@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mintnews.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.squareup.picasso.Picasso;
 
 public class FullNewsActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class FullNewsActivity extends AppCompatActivity {
     private TextView newsTitle, newsDescription, newsContent;
     private ImageView newsImage;
     private Button button;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class FullNewsActivity extends AppCompatActivity {
         newsDescription = findViewById(R.id.newsDescription);
         newsContent = findViewById(R.id.newsContent);
         button = findViewById(R.id.fullStoryBtn);
+        fab = findViewById(R.id.shareFAB);
 
         newsImage = findViewById(R.id.newsImage);
 
@@ -55,7 +58,27 @@ public class FullNewsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        fab.setOnClickListener(view -> {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Did you hear about this ? \n\n"+getIntent().getStringExtra("url"));
+            sendIntent.setType("text/plain");
+
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
+        });
+
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
 }

@@ -12,6 +12,7 @@ public interface RetrofitWebService {
 
     String BASE_URL = "https://newsapi.org/";
 
+
     Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build();

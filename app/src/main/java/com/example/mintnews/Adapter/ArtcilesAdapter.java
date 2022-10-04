@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mintnews.Activities.FullNewsActivity;
+import com.example.mintnews.Activities.MainActivity;
 import com.example.mintnews.Models.ArticlesModel;
 import com.example.mintnews.R;
 import com.squareup.picasso.Callback;
@@ -44,6 +45,9 @@ public class ArtcilesAdapter extends RecyclerView.Adapter<ArtcilesAdapter.ViewHo
 
         ArticlesModel model = articlesModelArrayList.get(position);
         holder.newsTitle.setText(model.getTitle());
+//        holder.sourceLabel.setText(model.getSourceModel().getName());
+//        Log.d("HAPPIE", model.getSourceModel().getName());
+
         Picasso.get().load(model.getUrlToImage())
 //                .resize(90,130)
                 .into(holder.newsImage, new Callback() {
@@ -70,6 +74,7 @@ public class ArtcilesAdapter extends RecyclerView.Adapter<ArtcilesAdapter.ViewHo
                 intent.putExtra("desc", model.getDescription());
                 intent.putExtra("url", model.getUrl());
                 context.startActivity(intent);
+                ((MainActivity)context).finish();
             }
         });
 
@@ -82,11 +87,12 @@ public class ArtcilesAdapter extends RecyclerView.Adapter<ArtcilesAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView newsImage;
-        private TextView newsTitle;
+        private TextView newsTitle, sourceLabel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             newsTitle = itemView.findViewById(R.id.newsTitle);
             newsImage = itemView.findViewById(R.id.newsImage);
+            sourceLabel = itemView.findViewById(R.id.sourceLabel);
 
         }
     }

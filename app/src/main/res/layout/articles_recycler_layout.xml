@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Shivay"
+                android:id="@+id/sourceLabel"
                 android:textColor="@color/light_grey"
                 android:fontFamily="@font/hellixbold"
                 android:layout_marginTop="25dp"

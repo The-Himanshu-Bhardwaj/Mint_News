@@ -8,6 +8,7 @@ public class NewsModel {
     private String status;
     private ArrayList<ArticlesModel> articles;
 
+
     public int getTotalResults() {
         return totalResults;
     }

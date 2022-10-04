@@ -127,6 +127,18 @@
         app:layout_constraintRight_toRightOf="parent" />
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+       app:layout_constraintBottom_toTopOf="@id/fullStoryBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="7dp"
+        android:id="@+id/shareFAB"
+        android:src="@drawable/share"
+        android:layout_marginRight="15dp"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

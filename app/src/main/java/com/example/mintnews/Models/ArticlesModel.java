@@ -2,11 +2,33 @@ package com.example.mintnews.Models;
 
 public class ArticlesModel {
 
+    private SourceModel sourceModel;
     private String title;
     private String description;
     private String content;
     private String urlToImage;
     private String url;
+
+
+    public ArticlesModel(SourceModel sourceModel, String title, String description, String content, String urlToImage, String url) {
+        this.sourceModel = sourceModel;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.urlToImage = urlToImage;
+        this.url = url;
+
+    }
+
+    public SourceModel getSourceModel() {
+        return sourceModel;
+    }
+
+    public void setSourceModel(SourceModel sourceModel) {
+        this.sourceModel = sourceModel;
+    }
+
+
 
     public String getTitle() {
         return title;
@@ -48,11 +70,11 @@ public class ArticlesModel {
         this.url = url;
     }
 
-    public ArticlesModel(String title, String description, String content, String urlToImage, String url) {
-        this.title = title;
-        this.description = description;
-        this.content = content;
-        this.urlToImage = urlToImage;
-        this.url = url;
-    }
+//    public ArticlesModel(String title, String description, String content, String urlToImage, String url) {
+//        this.title = title;
+//        this.description = description;
+//        this.content = content;
+//        this.urlToImage = urlToImage;
+//        this.url = url;
+//    }
 }
