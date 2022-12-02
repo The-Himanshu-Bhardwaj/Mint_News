@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mintnews.Activities.FullNewsActivity;
-import com.example.mintnews.Activities.MainActivity;
 import com.example.mintnews.Models.ArticlesModel;
 import com.example.mintnews.R;
 import com.squareup.picasso.Callback;
@@ -74,7 +73,6 @@ public class ArtcilesAdapter extends RecyclerView.Adapter<ArtcilesAdapter.ViewHo
                 intent.putExtra("desc", model.getDescription());
                 intent.putExtra("url", model.getUrl());
                 context.startActivity(intent);
-                ((MainActivity)context).finish();
             }
         });
 

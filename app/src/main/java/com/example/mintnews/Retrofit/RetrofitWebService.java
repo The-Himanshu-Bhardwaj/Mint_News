@@ -11,6 +11,7 @@ import retrofit2.http.Url;
 public interface RetrofitWebService {
 
     String BASE_URL = "https://newsapi.org/";
+    
 
 
     Retrofit retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
