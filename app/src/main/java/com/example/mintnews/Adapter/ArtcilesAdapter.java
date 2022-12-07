@@ -1,5 +1,6 @@
 package com.example.mintnews.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -73,6 +74,7 @@ public class ArtcilesAdapter extends RecyclerView.Adapter<ArtcilesAdapter.ViewHo
                 intent.putExtra("desc", model.getDescription());
                 intent.putExtra("url", model.getUrl());
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }
         });
 

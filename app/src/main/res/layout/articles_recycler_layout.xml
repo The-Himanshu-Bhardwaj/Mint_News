@@ -43,7 +43,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Shivay"
+                android:text="Unknown"
                 android:id="@+id/sourceLabel"
                 android:textColor="@color/light_grey"
                 android:fontFamily="@font/hellixbold"
@@ -65,7 +65,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="24 July, 2022   |   2 min read"
+                android:text="07 Dec, 2022   |   2 min read"
                 android:textColor="@color/dark_grey"
                 android:fontFamily="@font/hellixbold"
                 android:layout_marginTop="10dp"

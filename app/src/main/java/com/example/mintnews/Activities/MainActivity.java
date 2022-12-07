@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
         shimmerFrameLayout = findViewById(R.id.shimmer);
         shimmerFrameLayout.startShimmer();
-//        showSnackbar();
 
         categoryLabel = findViewById(R.id.categoryLabel);
 
